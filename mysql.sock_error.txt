@@ -1,0 +1,65 @@
+Aapke system mein mariadb socket file ka path galat hai:
+
+1. Aapko mariadb client ko socket file ka sahi path dena hoga:
+
+bash
+mysql -u root -p -S /var/run/mysqld/mysqld.sock
+
+
+Agar yeh kaam nahi karta hai, to aap mariadb client configuration file ko edit kar sakte hain:
+
+1. Aapko mariadb client configuration file mein socket file ka path define karna hoga:
+
+bash
+sudo nano /etc/mysql/mariadb.cnf
+
+
+Add karne ke liye:
+
+[client]
+socket = /var/run/mysqld/mysqld.sock
+
+
+Phir se mariadb client se connect karein:
+
+bash
+mysql -u root -p
+
+
+Aapko ab mariadb use karne ke liye taiyar hona chahiye!
+===========================================================================================
+Aapko har baar -S /var/run/mysqld/mysqld.sock specify nahi karna hoga:
+
+1. Aap .my.cnf file create kar sakte hain apne home directory mein:
+
+bash
+sudo nano ~/.my.cnf
+
+
+Add karne ke liye:
+
+[client]
+socket = /var/run/mysqld/mysqld.sock
+user = root
+password = your_password
+
+
+File ko save karein aur permissions set karein:
+
+bash
+chmod 600 ~/.my.cnf
+
+
+Ab aap simply use kar sakte hain:
+
+bash
+mysql -p
+
+
+Ya agar aapne password .my.cnf file mein specify kiya hai, to aap simply use kar sakte hain:
+
+bash
+mysql
+
+
+Aapka kaam ab easy ho gaya hai!

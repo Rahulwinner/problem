@@ -1,0 +1,3 @@
+SHOW GRANTS FOR 'root'@'localhost';
+ALTER USER 'root'@'localhost' IDENTIFIED BY 'rahul123';
+FLUSH PRIVILEGES;
